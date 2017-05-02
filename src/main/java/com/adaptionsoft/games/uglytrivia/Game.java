@@ -29,29 +29,25 @@ public class Game {
     }
 
 	public boolean isPlayable() {
-		return (howManyPlayers() >= 2);
+        return (players.size() >= 2);
 	}
 
 	public boolean add(String playerName) {
-		if (howManyPlayers() == MAX_PLAYERS) {
+        if (players.size() == MAX_PLAYERS) {
 			throw new IllegalArgumentException("No more than "+MAX_PLAYERS+" allowed.");
 		}
 	    players.add(playerName);
-	    places[howManyPlayers()] = 0;
-	    purses[howManyPlayers()] = 0;
-	    inPenaltyBox[howManyPlayers()] = false;
+        places[players.size()] = 0;
+        purses[players.size()] = 0;
+        inPenaltyBox[players.size()] = false;
 	    
 	    System.out.println(playerName + " was added");
 	    System.out.println("They are player number " + players.size());
 
 		return true;
 	}
-	
-	public int howManyPlayers() {
-		return players.size();
-	}
 
-	public void roll(int roll) {
+    public void roll(int roll) {
 		System.out.println(players.get(currentPlayer) + " is the current player");
 		System.out.println("They have rolled a " + roll);
 		
