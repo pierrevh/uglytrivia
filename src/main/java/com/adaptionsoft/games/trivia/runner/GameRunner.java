@@ -12,11 +12,11 @@ public class GameRunner {
 	private static boolean notAWinner;
 
 	public static void main(String[] args) {
-        Random rand = new Random();
+        NumberGenerator rand = new RandomNumberGenerator();
 		run(Arrays.asList("Chet", "Pat", "Sue"), rand);
 	}
 
-	private static void run(List<String> players, Random random) {
+	public static void run(List<String> players, NumberGenerator random) {
 		Game aGame = new Game();
 		players.stream().forEach(p->aGame.add(p));
 
@@ -27,9 +27,6 @@ public class GameRunner {
 			} else {
 				notAWinner = aGame.wasCorrectlyAnswered();
 			}
-
-
-
 		} while (notAWinner);
 	}
 }
