@@ -2,7 +2,6 @@
 package com.adaptionsoft.games.trivia.runner;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 import com.adaptionsoft.games.uglytrivia.Game;
 
@@ -21,9 +20,9 @@ public class GameRunner {
 		players.stream().forEach(p->aGame.add(p));
 
 		do {
-			aGame.roll(random.nextInt(5) + 1);
+			aGame.turn(random.nextInt(5) + 1);
 			if (random.nextInt(9) == 7) {
-				notAWinner = aGame.wrongAnswer();
+				aGame.wrongAnswer();
 			} else {
 				notAWinner = aGame.wasCorrectlyAnswered();
 			}

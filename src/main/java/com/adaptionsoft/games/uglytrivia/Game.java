@@ -6,18 +6,21 @@ import java.util.LinkedList;
 public class Game {
     public static final int MAX_PLAYERS = 6;
     public static final int WINNING_AMOUNT_OF_COINS = 6;
+
+    //TODO make Player class
     ArrayList players = new ArrayList();
     int[] places = new int[MAX_PLAYERS];
     int[] purses = new int[MAX_PLAYERS];
     boolean[] inPenaltyBox = new boolean[MAX_PLAYERS];
 
+    // TODO Add generics
     LinkedList popQuestions = new LinkedList();
     LinkedList scienceQuestions = new LinkedList();
     LinkedList sportsQuestions = new LinkedList();
     LinkedList rockQuestions = new LinkedList();
 
     int currentPlayer = 0;
-    boolean isGettingOutOfPenaltyBox;
+    boolean isGettingOutOfPenaltyBox; //TODO is a Player property
 
     public Game() {
         for (int i = 0; i < 50; i++) {
@@ -32,7 +35,7 @@ public class Game {
         return (players.size() >= 2);
     }
 
-    public boolean add(String playerName) {
+    public void add(String playerName) {
         if (players.size() == MAX_PLAYERS) {
             throw new IllegalArgumentException("No more than " + MAX_PLAYERS + " allowed.");
         }
@@ -43,11 +46,9 @@ public class Game {
 
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + players.size());
-
-        return true;
     }
 
-    public void roll(int roll) {
+    public void turn(int roll) {
         System.out.println(players.get(currentPlayer) + " is the current player");
         System.out.println("They have rolled a " + roll);
 
@@ -116,7 +117,7 @@ public class Game {
                 return correctAnswerHandlingWhenPlayerCanScore();
             } else {
                 nextPlayer();
-                return true;
+                return true;  //TODO: ?! winner ?!
             }
         } else {
             return correctAnswerHandlingWhenPlayerCanScore();
@@ -148,13 +149,12 @@ public class Game {
         if (currentPlayer == players.size()) currentPlayer = 0;
     }
 
-    public boolean wrongAnswer() {
+    public void wrongAnswer() {
         System.out.println("Question was incorrectly answered");
         System.out.println(players.get(currentPlayer) + " was sent to the penalty box");
         inPenaltyBox[currentPlayer] = true;
 
         nextPlayer();
-        return true;
     }
 
 
