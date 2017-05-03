@@ -109,8 +109,6 @@ public class GameRunnerTest {
         "Answer was correct!!!!\n" +
         "Pierre now has 6 Gold Coins.\n";
 
-    private List<String> goldenMasterAsList = Arrays.asList(goldenMasterAlwaysRoll4AndNoPenaltyBox);
-
     @Test
     public void showsGoldenMasterOutputWhenUsingFixedControlsForGoldenMaster() throws Exception {
         ByteArrayOutputStream canvas = new ByteArrayOutputStream();
